@@ -1,0 +1,20 @@
+
+config BSP_SUPPORT_FPU
+    bool "Using Float"
+    default n
+
+menu "Hardware Drivers Config"
+    menu "rockchip Peripheral Drivers"
+        menuconfig BSP_USING_GIC
+            bool "Enable GIC"
+            select RT_USING_GIC
+            default y
+        if BSP_USING_GIC
+            config BSP_USING_GIC400
+                bool "Enable GIC400"
+                default y
+            config BSP_USING_GIC500
+                bool "Enable GIC500"
+                default n
+        endif
+endmenu
